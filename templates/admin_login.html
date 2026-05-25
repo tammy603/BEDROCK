@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<section style="padding:5rem 0;display:flex;justify-content:center">
+  <div style="width:100%;max-width:400px;padding:0 1.5rem">
+    <div class="card" style="padding:2.5rem;text-align:center">
+      <div style="font-size:3rem;margin-bottom:1rem">🔒</div>
+      <h2 style="margin-bottom:2rem;color:#d4a017">{{ t.login_title }}</h2>
+      <form method="POST" action="/admin">
+        <input type="password" name="password" placeholder="Password" autofocus
+          style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:.75rem 1rem;color:#e6edf3;font-size:1rem;outline:none;margin-bottom:1rem;text-align:center">
+        <button type="submit" class="btn btn-gold" style="width:100%">{{ t.login_btn }}</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

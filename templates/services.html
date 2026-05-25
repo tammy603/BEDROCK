@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section style="background:var(--bg2);padding:4rem 0;text-align:center;border-bottom:1px solid var(--border)">
+  <div class="container">
+    <h1 style="font-size:2.5rem;font-weight:900;margin-bottom:1rem">{{ t.services_title }}</h1>
+    <p class="text-muted" style="font-size:1.1rem">Everything you need to start your life in Paraguay.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-2">
+      {% for s in services %}
+      <div class="card" style="display:flex;gap:1.5rem;align-items:flex-start;transition:border-color .2s" onmouseover="this.style.borderColor='#d4a017'" onmouseout="this.style.borderColor='#30363d'">
+        <div style="font-size:3rem;flex-shrink:0;line-height:1">{{ s.icon }}</div>
+        <div>
+          <h3 style="color:#d4a017;margin-bottom:.5rem;font-size:1.1rem">{{ s.title }}</h3>
+          <p class="text-muted" style="font-size:.95rem;line-height:1.7">{{ s.desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div style="text-align:center;margin-top:4rem;padding:3rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius)">
+      <h2 style="font-size:1.8rem;margin-bottom:1rem">{{ t.cta_title }}</h2>
+      <p class="text-muted" style="margin-bottom:2rem">{{ t.cta_sub }}</p>
+      <a href="/contact" class="btn btn-gold" style="font-size:1.05rem">{{ t.cta_btn }}</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

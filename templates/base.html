@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEDROCK — Immigration Services Paraguay</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#0d1117;--bg2:#161b22;--bg3:#1c2333;
+      --gold:#d4a017;--gold2:#f0c040;
+      --text:#e6edf3;--muted:#8b949e;--border:#30363d;
+      --green:#3fb950;--radius:12px;
+    }
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--gold);text-decoration:none}
+    a:hover{color:var(--gold2)}
+
+    /* NAV */
+    nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+    .logo{font-size:1.5rem;font-weight:800;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+    .logo span{color:var(--text);font-weight:300}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .lang-switcher{display:flex;gap:.5rem}
+    .lang-switcher a{font-size:.8rem;padding:.25rem .6rem;border-radius:6px;border:1px solid var(--border);color:var(--muted)}
+    .lang-switcher a.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700}
+
+    /* BUTTONS */
+    .btn{display:inline-block;padding:.75rem 1.75rem;border-radius:8px;font-weight:700;font-size:.95rem;transition:all .2s;cursor:pointer;border:none}
+    .btn-gold{background:var(--gold);color:#000}
+    .btn-gold:hover{background:var(--gold2);color:#000;transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--gold);border:2px solid var(--gold)}
+    .btn-outline:hover{background:var(--gold);color:#000}
+
+    /* CARDS */
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+
+    /* FOOTER */
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.85rem}
+    footer .footer-logo{font-size:1.2rem;font-weight:800;letter-spacing:3px;color:var(--gold);margin-bottom:.5rem}
+
+    /* UTILITY */
+    .container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+    .section{padding:5rem 0}
+    .section-title{font-size:2rem;font-weight:800;text-align:center;margin-bottom:3rem}
+    .section-title span{color:var(--gold)}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+    .text-center{text-align:center}
+    .text-muted{color:var(--muted)}
+    .badge{background:var(--gold);color:#000;padding:.2rem .6rem;border-radius:20px;font-size:.75rem;font-weight:700}
+    @media(max-width:768px){
+      .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .logo{font-size:1.2rem}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BEDROCK<span> paraguay</span></div>
+  <div class="nav-links">
+    <a href="/">{{ t.nav_home }}</a>
+    <a href="/services">{{ t.nav_services }}</a>
+    <a href="/contact">{{ t.nav_contact }}</a>
+  </div>
+  <div class="lang-switcher">
+    {% for code, name in langs.items() %}
+    <a href="/lang/{{ code }}" class="{{ 'active' if lang == code else '' }}">{{ name[:2].upper() }}</a>
+    {% endfor %}
+  </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<footer>
+  <div class="footer-logo">BEDROCK</div>
+  <p>{{ t.footer_tag }}</p>
+  <p style="margin-top:.5rem;font-size:.75rem">© 2026 BEDROCK Immigration Services</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section style="padding:4rem 0">
+  <div class="container" style="max-width:680px">
+    <div style="text-align:center;margin-bottom:3rem">
+      <h1 style="font-size:2.5rem;font-weight:900;margin-bottom:1rem">{{ t.contact_title }}</h1>
+      <p class="text-muted">We reply within 24 hours. No commitment required.</p>
+    </div>
+
+    {% if success %}
+    <div style="background:#0d2818;border:1px solid #3fb950;border-radius:var(--radius);padding:1.5rem;text-align:center;font-size:1.1rem;color:#3fb950;margin-bottom:2rem">
+      {{ t.contact_ok }}
+    </div>
+    {% endif %}
+
+    <div class="card" style="padding:2.5rem">
+      <form method="POST" action="/contact">
+        <div style="display:grid;gap:1.5rem">
+
+          <div>
+            <label style="display:block;margin-bottom:.5rem;font-size:.9rem;font-weight:600;color:#8b949e">{{ t.contact_name }} *</label>
+            <input type="text" name="name" required style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:.75rem 1rem;color:#e6edf3;font-size:1rem;outline:none" onfocus="this.style.borderColor='#d4a017'" onblur="this.style.borderColor='#30363d'">
+          </div>
+
+          <div class="grid-2" style="gap:1rem">
+            <div>
+              <label style="display:block;margin-bottom:.5rem;font-size:.9rem;font-weight:600;color:#8b949e">{{ t.contact_email }}</label>
+              <input type="email" name="email" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:.75rem 1rem;color:#e6edf3;font-size:1rem;outline:none" onfocus="this.style.borderColor='#d4a017'" onblur="this.style.borderColor='#30363d'">
+            </div>
+            <div>
+              <label style="display:block;margin-bottom:.5rem;font-size:.9rem;font-weight:600;color:#8b949e">{{ t.contact_phone }} *</label>
+              <input type="tel" name="phone" required style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:.75rem 1rem;color:#e6edf3;font-size:1rem;outline:none" onfocus="this.style.borderColor='#d4a017'" onblur="this.style.borderColor='#30363d'">
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block;margin-bottom:.5rem;font-size:.9rem;font-weight:600;color:#8b949e">{{ t.contact_nationality }} *</label>
+            <input type="text" name="nationality" required placeholder="e.g. Brazilian, Argentine, American..." style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:.75rem 1rem;color:#e6edf3;font-size:1rem;outline:none" onfocus="this.style.borderColor='#d4a017'" onblur="this.style.borderColor='#30363d'">
+          </div>
+
+          <div>
+            <label style="display:block;margin-bottom:.5rem;font-size:.9rem;font-weight:600;color:#8b949e">{{ t.contact_service }} *</label>
+            <select name="service" required style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:.75rem 1rem;color:#e6edf3;font-size:1rem;outline:none;appearance:auto" onfocus="this.style.borderColor='#d4a017'" onblur="this.style.borderColor='#30363d'">
+              <option value="">—</option>
+              {% for opt in service_options %}
+              <option value="{{ opt }}">{{ opt }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block;margin-bottom:.5rem;font-size:.9rem;font-weight:600;color:#8b949e">{{ t.contact_msg }}</label>
+            <textarea name="message" rows="4" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:.75rem 1rem;color:#e6edf3;font-size:1rem;outline:none;resize:vertical" onfocus="this.style.borderColor='#d4a017'" onblur="this.style.borderColor='#30363d'"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="width:100%;font-size:1.05rem;padding:1rem">{{ t.contact_btn }}</button>
+
+        </div>
+      </form>
+    </div>
+
+    <!-- WhatsApp quick contact -->
+    <div style="text-align:center;margin-top:2rem;padding:1.5rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius)">
+      <p class="text-muted" style="margin-bottom:1rem">Prefer WhatsApp?</p>
+      <a href="https://wa.me/595993460819?text=Hello%20BEDROCK%2C%20I%20need%20help%20with%20immigration%20in%20Paraguay" target="_blank" class="btn" style="background:#25d366;color:#000;font-weight:700">
+        💬 Chat on WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
